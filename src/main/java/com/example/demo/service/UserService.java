@@ -34,6 +34,16 @@ public class UserService {
         return userRepository.save(new User(name,email));
     }
 
+    public void updateUser(int id, User user) {
+        User byId = userRepository.getOne(id);
+
+        byId.setName(user.getName());
+        byId.setEmail(user.getEmail());
+        byId.setProduct(user.getProduct());
+
+        userRepository.save(byId);
+    }
+
     public List<User> getAll() {
         return userRepository.findAll();
     }
