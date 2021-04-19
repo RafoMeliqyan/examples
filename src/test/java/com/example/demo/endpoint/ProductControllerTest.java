@@ -64,7 +64,7 @@ class ProductControllerTest {
         objectNode.put("description", "efdwds");
         objectNode.put("price", 4000);
 
-        mockMvc.perform(put("/product/update/14")
+        mockMvc.perform(put("/product/update/{id}", 14)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectNode.toString()))
                 .andExpect(status().isOk());
