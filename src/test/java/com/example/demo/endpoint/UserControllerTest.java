@@ -28,7 +28,7 @@ class UserControllerTest {
 
     @Test
     void getUserTest() throws Exception {
-        mockMvc.perform(get("/user/35")
+        mockMvc.perform(get("/user/{id}", 35)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
@@ -47,7 +47,7 @@ class UserControllerTest {
 
     @Test
     void deleteTest() throws Exception{
-        mockMvc.perform(delete("/user/delete/37")
+        mockMvc.perform(delete("/user/delete/{id}", 37)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
@@ -58,7 +58,7 @@ class UserControllerTest {
         objectNode.put("name", "valodik");
         objectNode.put("email", "valodik@mail.com");
 
-        mockMvc.perform(put("/user/update/35")
+        mockMvc.perform(put("/user/update/{id}", 35)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectNode.toString()))
                 .andExpect(status().isOk());

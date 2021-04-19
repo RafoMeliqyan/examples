@@ -30,7 +30,7 @@ class ProductControllerTest {
 
     @Test
     void getByIdTest() throws Exception {
-        mockMvc.perform(get("/product/13")
+        mockMvc.perform(get("/product/{id}", 37)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
@@ -52,7 +52,7 @@ class ProductControllerTest {
 
     @Test
     void deleteProductTest() throws Exception{
-        mockMvc.perform(delete("/delete/product/16")
+        mockMvc.perform(delete("/delete/product/{id}", 16)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
